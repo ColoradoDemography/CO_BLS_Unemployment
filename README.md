@@ -1,7 +1,7 @@
-# CO_BLS_Unemployment
+
 Sample Map Integrating ArcGIS Online, the ESRI Javascript API, and BLS Unemployment Data (Using Colorado as an Example)
 
-## A Dynamic no-update Application
+## A Dynamic No-Update Application
 
 See <a href="" target="_blank">BLS_Unemployment_PHP Repo</a> for details on data pipeline.
 
@@ -9,7 +9,7 @@ This application is designed to read the data, and populate the appropriate menu
 
 
 ##Do you want to make an application like this for your state?
-#Do you have ArcGIS Online?
+###Do you have ArcGIS Online?
 
 Then you're in luck.
 
@@ -32,7 +32,7 @@ Now, look in the code for app.js.  Replace my feature service address with yours
 Next up, you'll want to point to the proper bls data file.  At the top of the app.js file, look for the following code block:
 ```
     var my_json;
-$.getJSON("https://s3-us-west-2.amazonaws.com/blsdata/08\_bls.json", function(json) {
+$.getJSON("https://s3-us-west-2.amazonaws.com/blsdata/08_bls.json", function(json) {
   my_json = json;
   init();
 });
