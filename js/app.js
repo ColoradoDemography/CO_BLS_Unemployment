@@ -7,6 +7,9 @@ $.getJSON("https://s3-us-west-2.amazonaws.com/blsdata/08_bls.json", function(jso
 
     
     function init(){
+     var map;  //will contain map
+      var legend;  //will contain legend widget
+      
       
       //turn month into fraction
       function fractionate(a){
@@ -28,6 +31,7 @@ $.getJSON("https://s3-us-west-2.amazonaws.com/blsdata/08_bls.json", function(jso
         return 0;
       }
       
+      //array sorting function
      function uniq(a) {
     return a.filter(function(item, pos, ary) {
         return !pos || item != ary[pos - 1];
@@ -64,10 +68,13 @@ for(i=0;i<yeararray.length;i=i+1){
       //select most recent year
       $('#year').val(yeararray[yeararray.length-1]).change();
       
+      //get name of month from its decimal value
       function getmonthfromdecimal(monthval){
         
+        //turn month value into a string
         monthval=String(monthval);
 
+        //split the string on the '.' into an array.  monthval[1] is second element in array; anything after the decimal
         var monthval = monthval.split(".");
         
         if(monthval[1]==="01"){return 'January';}
@@ -99,26 +106,25 @@ for(i=0;i<montharray.length;i=i+1){
       $('#month option:last').prop('selected', true);  
       
 
-
       
-    var map;
-      var legend;  //will contain legend widget
-      
+      //esri amd module format
     require(["esri/map", "esri/layers/FeatureLayer", "esri/dijit/Legend", "esri/graphic", "dojo/domReady!"], function(Map, FeatureLayer, Legend, Graphic) {
       
-      
+      //initialize map with appropriate lng/lat coordinates and zoom level for the state
       map = new Map("mapDiv", {
         center: [-104.8, 39],
         zoom: 7,
         basemap: "topo"
       });
       
+      //create event handlers
       map.on("load", function(){
           map.graphics.enableMouseEvents();
           map.graphics.on("mouse-out", closeDialog);
-          
-        });
+          });
 
+      
+      //add map layer to legend when added
   	dojo.connect(map, 'onLayersAddResult', function(results) {
 		var layerInfo = dojo.map(results, function(layer, index) {
 			return {
@@ -134,8 +140,7 @@ for(i=0;i<montharray.length;i=i+1){
 		}
 	});
 
-      
-      
+            
   //featureLayer: the feature service address in ArcGIS Online where all your data is stored
   //initialized with 'template' which determines what the popup will look like when this feature layer is clicked on the map
 	featureLayer = new FeatureLayer("http://services.arcgis.com/IamIM3RJ5xHykalK/arcgis/rest/services/colorado/FeatureServer/0", {
@@ -143,16 +148,13 @@ for(i=0;i<montharray.length;i=i+1){
 		outFields : ["*"]
 	});
 
-      
-
-      
+           
   //adds featureLayer (data layer) to map
 	map.addLayers([featureLayer]);
       
       change_moyear();  //render layer
       
-      
-
+      //symbol for styling features
 	var highlightSymbol = new esri.symbol.SimpleFillSymbol(esri.symbol.SimpleFillSymbol.STYLE_NULL, new esri.symbol.SimpleLineSymbol(esri.symbol.SimpleLineSymbol.STYLE_SOLID, new dojo.Color([255, 0, 0]), 2), new dojo.Color([125, 125, 125, 0.35]));
 
 
@@ -160,6 +162,8 @@ for(i=0;i<montharray.length;i=i+1){
 	//When fired, create new graphic with the geometry from the event.graphic and
 	//add it to the map's graphics layer
       
+      
+      //on mouseover of feature, highlight the feature, and then populate the label fields in the lower left of the screen
       featureLayer.on("mouse-over", function(evt){
                   map.graphics.clear();
         
@@ -177,8 +181,7 @@ for(i=0;i<montharray.length;i=i+1){
            }
         }
         }
-        
-        
+               
         
           var highlightGraphic = new Graphic(evt.graphic.geometry,highlightSymbol);
           map.graphics.add(highlightGraphic);
@@ -192,6 +195,7 @@ for(i=0;i<montharray.length;i=i+1){
 
         }
       
+      //this is called when a user changes one of the dropdown functions
       function change_moyear(){
 
         //get value of month dropdown - it will test us month and year

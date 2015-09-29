@@ -40,6 +40,17 @@ $.getJSON("https://s3-us-west-2.amazonaws.com/blsdata/08_bls.json", function(jso
 
 Replace the "08" in 08\_bls.json with the proper state fips code for your state.
 
+Lastly, find the map creation code block in the app.js file.
+```
+      map = new Map("mapDiv", {
+        center: [-104.8, 39],
+        zoom: 7,
+        basemap: "topo"
+      });
+```
+You'll want to recenter the map directly on your state, so you'll need to change the lng/lat coordinates in there.
+
+
 That's it.  You now have an automatically updating dynamic unemployment map for your state.
 
 
