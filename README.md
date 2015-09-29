@@ -3,7 +3,7 @@ Sample Map Integrating ArcGIS Online, the ESRI Javascript API, and BLS Unemploym
 
 ## A Dynamic No-Update Application
 
-See <a href="" target="_blank">BLS_Unemployment_PHP Repo</a> for details on data pipeline.
+See <a href="https://github.com/royhobbstn/BLS_Unemployment_PHP" target="_blank">BLS_Unemployment_PHP Repo</a> for details on data pipeline.
 
 This application is designed to read the data, and populate the appropriate menu items dynamically.  That means that your application stays current, with zero maintenance from month to month.
 
@@ -13,7 +13,7 @@ This application is designed to read the data, and populate the appropriate menu
 
 Then you're in luck.
 
-First, modify a TIGER Shapefile of the counties in your state by adding a field titled 'bls' (type text) to your shapefile.  Populate 'bls' with ID's that correspond to their BLS id.  The format looks like this: LAUCN010050000000003 where the 5 digits after LAUCN ('01005') correspond to the state and county fips codes of the county in question.
+First, modify a <a href="https://www.census.gov/geo/maps-data/data/tiger-line.html" target="_blank">TIGER</a> Shapefile of the counties in your state by adding a field titled 'bls' (type: text) to your shapefile.  Populate 'bls' with ID's that correspond to their BLS id.  The format looks like this: LAUCN010050000000003 where the 5 digits after LAUCN ('01005') correspond to the state and county fips codes of the county in question.
 Upload the above file to ArcGIS Online.  Share it with everyone.  
 
 Next, find the service address for your newly created feature service.  It will look something like this: 
