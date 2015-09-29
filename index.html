@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Unemployment Map</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no">
+  <link rel="stylesheet" href="http://js.arcgis.com/3.14/dijit/themes/claro/claro.css">
+  <link rel="stylesheet" href="http://js.arcgis.com/3.14/esri/css/esri.css">
+  
+  <link rel="stylesheet" href="css/app.css">
+  
+  <script src="http://js.arcgis.com/3.14/"></script>
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  
+  <script src="js/app.js"></script>
+
+</head>
+<body class="claro">
+  <div id="mapDiv"></div>
+  
+  <!-- Year dropdown -->
+	<div id="date_select_div" class="mystyle">
+		<span>Year:</span>
+		<select id="year">
+		</select><br /><br />
+    <span>Month:</span>
+		<select id="month">
+		</select>
+	</div>
+  
+  
+  <div id="legendDiv"  class="mystyle"></div>
+  <div id="mouseoverDiv"  class="mystyle"><p class="m_over"><span id="cname" class="grey"></span><span id="unemp"></span></p></div>  
+</body>
+</html>
