@@ -1,6 +1,6 @@
 
     var my_json;
-$.getJSON("https://s3-us-west-2.amazonaws.com/blsdata/08_bls.json", function(json) {
+$.getJSON("https://storage.googleapis.com/bls-data/08_bls.json", function(json) {
   my_json = json;
   init();
 });
@@ -143,7 +143,7 @@ for(i=0;i<montharray.length;i=i+1){
             
   //featureLayer: the feature service address in ArcGIS Online where all your data is stored
   //initialized with 'template' which determines what the popup will look like when this feature layer is clicked on the map
-	featureLayer = new FeatureLayer("http://services.arcgis.com/IamIM3RJ5xHykalK/arcgis/rest/services/colorado/FeatureServer/0", {
+	featureLayer = new FeatureLayer("https://services.arcgis.com/IamIM3RJ5xHykalK/arcgis/rest/services/colorado/FeatureServer/0", {
 		mode : FeatureLayer.MODE_ONDEMAND,
 		outFields : ["*"]
 	});
