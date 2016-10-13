@@ -3,7 +3,7 @@ Sample Map Integrating ArcGIS Online, the ESRI Javascript API, and BLS Unemploym
 
 ## A Dynamic No-Update Application
 
-See <a href="https://github.com/royhobbstn/BLS_Unemployment_PHP" target="_blank">BLS_Unemployment_PHP Repo</a> for details on data pipeline.
+See <a href="https://github.com/ColoradoDemography/BLS_Unemployment_PHP" target="_blank">BLS_Unemployment_PHP Repo</a> for details on data pipeline.
 
 This application is designed to read the data, and populate the appropriate menu items dynamically.  That means that your application stays current, with zero maintenance from month to month.
 
