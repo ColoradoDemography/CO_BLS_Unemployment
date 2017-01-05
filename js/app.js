@@ -1,6 +1,6 @@
 
     var my_json;
-$.getJSON("/data/08_bls.json", function(json) {
+$.getJSON("/CO_BLS_Unemployment/data/08_bls.json", function(json) {
   my_json = json;
   console.log(my_json);
   init();
