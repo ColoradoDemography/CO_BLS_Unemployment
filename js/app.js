@@ -1,7 +1,8 @@
 
     var my_json;
-$.getJSON("https://storage.googleapis.com/bls-data/08_bls.json", function(json) {
+$.getJSON("/data/08_bls.json", function(json) {
   my_json = json;
+  console.log(my_json);
   init();
 });
 
