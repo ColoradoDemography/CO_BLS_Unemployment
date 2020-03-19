@@ -66,8 +66,8 @@ for(i=0;i<yeararray.length;i=i+1){
 }));
 }
       
-      //select most recent year //start with 2019 until we have 2020 data
-      $('#year').val(yeararray[yeararray.length-2]).change();
+      //select most recent year
+      $('#year').val(yeararray[yeararray.length-1]).change();
       
       //get name of month from its decimal value
       function getmonthfromdecimal(monthval){
@@ -104,9 +104,9 @@ for(i=0;i<montharray.length;i=i+1){
 }
       
       //select most current month
-      //$('#month option:last').prop('selected', true); 
+      $('#month option:last').prop('selected', true); 
       //Manual select for now    
-      $('#month text:December').prop('selected', true);
+      //$('#month text:December').prop('selected', true);
 
       
       //esri amd module format
