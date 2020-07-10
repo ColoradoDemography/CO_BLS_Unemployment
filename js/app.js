@@ -110,13 +110,14 @@ for(i=0;i<montharray.length;i=i+1){
 
       
       //esri amd module format
-    require(["esri/map", "esri/layers/FeatureLayer", "esri/dijit/Legend", "esri/graphic", "dojo/domReady!"], function(Map, FeatureLayer, Legend, Graphic) {
+    require(["esri/map", "esri/layers/FeatureLayer", "esri/layers/LabelClass", "esri/symbols/TextSymbol", "esri/dijit/Legend", "esri/graphic", "dojo/domReady!"], function(Map, FeatureLayer, LabelClass, TextSymbol, Legend, Graphic) {
       
       //initialize map with appropriate lng/lat coordinates and zoom level for the state
       map = new Map("mapDiv", {
         center: [-104.8, 39],
         zoom: 7,
-        basemap: "topo"
+        basemap: "osm",
+        showLabels: true
       });
       
       //create event handlers
@@ -150,6 +151,19 @@ for(i=0;i<montharray.length;i=i+1){
 		outFields : ["*"]
 	});
 
+  var labelSymbol = new TextSymbol();
+        labelSymbol.font.setSize("8pt");
+        labelSymbol.font.setFamily("arial");
+        labelSymbol.setColor("#666");
+        labelSymbol.font.setWeight("Bold");
+        
+  var json = {
+      "labelExpressionInfo": {"value": "{NAME}"}
+  };
+        
+  var lc = new LabelClass(json);
+        lc.symbol = labelSymbol;
+        featureLayer.setLabelingInfo([ lc ]);
            
   //adds featureLayer (data layer) to map
 	map.addLayers([featureLayer]);
