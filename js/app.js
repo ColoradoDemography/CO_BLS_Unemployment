@@ -67,7 +67,7 @@ for(i=0;i<yeararray.length;i=i+1){
 }
       
       //select most recent year
-      $('#year').val(yeararray[yeararray.length-1]).change();
+      $('#year').val(yeararray[yeararray.length]).change();
       
       //get name of month from its decimal value
       function getmonthfromdecimal(monthval){
