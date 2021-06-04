@@ -142,7 +142,7 @@ for(i=0;i<montharray.length;i=i+1){
 	      case "Dec":
 		$('#month option:eq(11)').prop('selected', true);
 		break;
-
+      }
       //select most current month
       //$('#month option:last').prop('selected', true); 
       //Manual select for now    
