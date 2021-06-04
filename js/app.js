@@ -102,12 +102,51 @@ for(i=0;i<montharray.length;i=i+1){
 }));
 
 }
+      //Get newest value and use as first month in select
       var checkstart = my_json[1].d[0].k;
       var startmonth = checkstart.substring(0,3);
+      switch (startmonth){
+	      case "Jan":
+		$('#month option:eq(0)').prop('selected', true);
+		break;
+      	      case "Feb":
+		$('#month option:eq(1)').prop('selected', true);
+		break;
+	      case "Mar":
+		$('#month option:eq(2)').prop('selected', true);
+		break;
+	      case "Apr":
+		$('#month option:eq(3)').prop('selected', true);
+		break;
+	      case "May":
+		$('#month option:eq(4)').prop('selected', true);
+		break;
+	      case "Jun":
+		$('#month option:eq(5)').prop('selected', true);
+		break;
+	      case "Jul":
+		$('#month option:eq(6)').prop('selected', true);
+		break;
+	      case "Aug":
+		$('#month option:eq(7)').prop('selected', true);
+		break;
+	      case "Sep":
+		$('#month option:eq(8)').prop('selected', true);
+		break;
+	      case "Oct":
+		$('#month option:eq(9)').prop('selected', true);
+		break;
+	      case "Nov":
+		$('#month option:eq(10)').prop('selected', true);
+		break;
+	      case "Dec":
+		$('#month option:eq(11)').prop('selected', true);
+		break;
+
       //select most current month
       //$('#month option:last').prop('selected', true); 
       //Manual select for now    
-      $('#month option:eq(1)').prop('selected', true);
+      //$('#month option:eq(1)').prop('selected', true);
 
       
       //esri amd module format
