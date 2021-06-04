@@ -87,7 +87,7 @@ for(i=0;i<yeararray.length;i=i+1){
         if(monthval[1]==="07"){return 'July';}
         if(monthval[1]==="08"){return 'August';}
         if(monthval[1]==="09"){return 'September';}
-         if(monthval[1]==="1"){return 'October';}
+         if(monthval[1]==="10"){return 'October';}
          if(monthval[1]==="11"){return 'November';}
          if(monthval[1]==="12"){return 'December';}
          if(monthval[1]==="13"){return 'Annual';}       
@@ -102,11 +102,12 @@ for(i=0;i<montharray.length;i=i+1){
 }));
 
 }
-      
+      var checkstart = my_json[1].d[0].k;
+      var startmonth = checkstart.substring(0,3);
       //select most current month
       //$('#month option:last').prop('selected', true); 
       //Manual select for now    
-      $('#month text:March').prop('selected', true);
+      $('#month option:eq(1)').prop('selected', true);
 
       
       //esri amd module format
