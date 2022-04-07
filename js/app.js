@@ -56,6 +56,7 @@ $.getJSON("https://storage.googleapis.com/bls-data/08_bls.json", function(json) 
     
       //get unique set of years
     yeararray=uniq(yeararray);
+	    console.log(yeararray);
 
       
       //dynamically populate year array
