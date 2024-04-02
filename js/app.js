@@ -43,10 +43,10 @@ $.getJSON("https://storage.googleapis.com/bls-data/08_bls.json", function(json) 
       var montharray=[];
       
       //construct key of availabe month/year combos
-      for(i=0;i<my_json[0].d.length;i=i+1){
-        decval = fractionate( (my_json[0].d[i].k).substr(0,3) );
-        yeararray.push(   parseInt((my_json[0].d[i].k).substr(-4))  );
-        montharray.push(   parseInt((my_json[0].d[i].k).substr(-4)) + fractionate( (my_json[0].d[i].k).substr(0,3) )  );
+      for(i=0;i<my_json[1].d.length;i=i+1){
+        decval = fractionate( (my_json[1].d[i].k).substr(0,3) );
+        yeararray.push(   parseInt((my_json[1].d[i].k).substr(-4))  );
+        montharray.push(   parseInt((my_json[1].d[i].k).substr(-4)) + fractionate( (my_json[0].d[i].k).substr(0,3) )  );
       }
 
 
