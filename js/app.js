@@ -145,9 +145,9 @@ for(i=0;i<montharray.length;i=i+1){
 		break;
       }*/
       //select most current month
-      $('#month option:last').prop('selected', true); 
+      //$('#month option:last').prop('selected', true); 
       //Manual select for now    
-      //$('#month option:eq(1)').prop('selected', true);
+      $('#month option:eq(0)').prop('selected', true);
 
       
       //esri amd module format
