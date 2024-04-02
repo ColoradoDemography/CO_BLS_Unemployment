@@ -106,7 +106,7 @@ for(i=0;i<montharray.length;i=i+1){
       //Get newest value and use as first month in select
       var checkstart = my_json[1].d[0].k;
       var startmonth = checkstart.substring(0,3);
-      /*switch (startmonth){
+      switch (startmonth){
 	      case "Jan":
 		$('#month option:eq(0)').prop('selected', true);
 		break;
@@ -143,11 +143,11 @@ for(i=0;i<montharray.length;i=i+1){
 	      case "Dec":
 		$('#month option:eq(11)').prop('selected', true);
 		break;
-      }*/
+      }
       //select most current month
       //$('#month option:last').prop('selected', true); 
       //Manual select for now    
-      $('#month option:eq(0)').prop('selected', true);
+      //$('#month option:eq(0)').prop('selected', true);
 
       
       //esri amd module format
@@ -371,7 +371,7 @@ for(i=0;i<montharray.length;i=i+1){
         $('#month').html('');  //clear current set of options
         
         //add new set of options
-        for(i=0;i<montharray.length;i=i+1){
+        for(i=0;i<montharray.length;i=i){//removed i=+1 after length
   if(montharray[i]>parseInt(curyear,10) && montharray[i]<(parseInt(curyear,10)+1)  )
     $('#month').append($('<option>', {
     value: (getmonthfromdecimal(montharray[i])).substr(0,3)+$('#year').val(),
