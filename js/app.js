@@ -151,13 +151,13 @@ for(i=0;i<montharray.length;i=i+1){
 
       
       //esri amd module format
-    require(["esri/map", "esri/layers/FeatureLayer", "esri/layers/LabelClass", "esri/symbols/TextSymbol", "esri/dijit/Legend", "esri/graphic", "dojo/domReady!"], function(Map, FeatureLayer, LabelClass, TextSymbol, Legend, Graphic) {
+    require(["esri/map", "esri/layers/FeatureLayer", "esri/renderers/ClassBreaksRenderer", "esri/layers/LabelClass", "esri/symbols/TextSymbol", "esri/Color", "esri/dijit/Legend", "esri/graphic", "dojo/domReady!"], function(Map, FeatureLayer, ClassBreaksRenderer, LabelClass, TextSymbol, Color, Legend, Graphic) {
       
       //initialize map with appropriate lng/lat coordinates and zoom level for the state
       map = new Map("mapDiv", {
         center: [-104.8, 39],
-        zoom: 7,
-        basemap: "osm",
+        zoom: 6,
+        basemap: "gray-vector",
         showLabels: true
       });
       
@@ -195,7 +195,7 @@ for(i=0;i<montharray.length;i=i+1){
   var labelSymbol = new TextSymbol();
         labelSymbol.font.setSize("8pt");
         labelSymbol.font.setFamily("arial");
-        labelSymbol.setColor("#666");
+        labelSymbol.setColor(new Color([0,0,0]));
         labelSymbol.font.setWeight("Bold");
         
   var json = {
@@ -260,19 +260,20 @@ for(i=0;i<montharray.length;i=i+1){
 
         
 //variable to be compared results from this function (the eval-ed result of theempest1 string variable).
-		var renderer = new esri.renderer.ClassBreaksRenderer(false, function(graphic) {
-			//console.log(graphic);
+		var renderer = new esri.renderer.ClassBreaksRenderer(false, function(graphic) {      
       
-      for(i=0;i<my_json.length;i=i+1){
+      for(i=0;i<my_json.length;i=i+1)
         if(graphic.attributes.bls==my_json[i].s){
-
+          {
            for(j=0;j<my_json[i].d.length;j=j+1){
-             if(my_json[i].d[j].k===datastring){return my_json[i].d[j].v; }
+             if(my_json[i].d[j].k===datastring){
+              return Number(my_json[i].d[j].v); 
+             }
            }
-        }
+          }
         }
          
-      return 10;
+      //return 10;
 		});
     //this adds a break from negative infinity to 1.  If a feature value falls within that range, then it will be painted with the styles and colors listed (in 'symbol').
     //the 'label' will be added to the legend
@@ -371,7 +372,7 @@ for(i=0;i<montharray.length;i=i+1){
         $('#month').html('');  //clear current set of options
         
         //add new set of options
-        for(i=0;i<montharray.length;i=i){//removed i=+1 after length
+        for(i=0;i<montharray.length;i=i+1){
   if(montharray[i]>parseInt(curyear,10) && montharray[i]<(parseInt(curyear,10)+1)  )
     $('#month').append($('<option>', {
     value: (getmonthfromdecimal(montharray[i])).substr(0,3)+$('#year').val(),
